@@ -1,0 +1,12 @@
+{
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "total_samples": 100,
+    "train_samples": 80,
+    "test_samples": 20,
+    "dataset_type": "synthetic_demo",
+    "validated_research": false,
+    "note": "These figures come from a small synthetic/demo dataset and are not validated research results."
+}
