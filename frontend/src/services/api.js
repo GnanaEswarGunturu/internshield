@@ -1,4 +1,4 @@
-export const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+export const API_URL = import.meta.env.VITE_API_URL || "";
 
 const HISTORY_KEY = "internshield_analysis_history";
 
@@ -16,7 +16,7 @@ async function parseJsonSafely(response) {
 export const analyzeJob = async (jobData) => {
   let response;
   try {
-    response = await fetch(`${API_URL}/analyze`, {
+    response = await fetch(`${API_URL}/api/analyze`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export const analyzeJob = async (jobData) => {
 export const getMetrics = async () => {
   let response;
   try {
-    response = await fetch(`${API_URL}/metrics`);
+    response = await fetch(`${API_URL}/api/metrics`);
   } catch {
     throw new Error(CONNECTION_ERROR);
   }
@@ -70,7 +70,7 @@ export const getMetrics = async () => {
 
 export const getHealth = async () => {
   try {
-    const response = await fetch(`${API_URL}/health`);
+    const response = await fetch(`${API_URL}/api/health`);
     if (!response.ok) return { status: "error" };
     return (await parseJsonSafely(response)) ?? { status: "error" };
   } catch {

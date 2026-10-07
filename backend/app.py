@@ -48,7 +48,7 @@ def _clean(value):
     return str(value).strip()
 
 
-@app.get("/")
+@app.get("/api/")
 def root():
     load_models()
     return {
@@ -59,7 +59,7 @@ def root():
     }
 
 
-@app.get("/health")
+@app.get("/api/health")
 def health():
     load_models()
     return {
@@ -68,7 +68,7 @@ def health():
     }
 
 
-@app.get("/metrics")
+@app.get("/api/metrics")
 def get_metrics():
     metrics_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), "model", "metrics.json"
@@ -88,7 +88,7 @@ def get_metrics():
     }
 
 
-@app.post("/analyze")
+@app.post("/api/analyze")
 def analyze_posting(job: JobPosting):
     try:
         title = _clean(job.title)
